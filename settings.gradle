@@ -1,0 +1,2 @@
+rootProject.name = "Device Admin Receiver"
+include ':app'
