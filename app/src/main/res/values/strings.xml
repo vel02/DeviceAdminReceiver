@@ -2,4 +2,8 @@
     <string name="app_name">Device Admin Receiver</string>
     <string name="password_failed">You will never break into this device!</string>
     <string name="password_success">Congratulations!</string>
+    <string name="input_hint">Input</string>
+    <string name="start_service_label">Start Service</string>
+    <string name="stop_service_label">Stop Service</string>
+    <string name="INPUT_DATA_EXTRA">Input_Data_Extra</string>
 </resources>

@@ -32,10 +32,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         getPermissions();
 
+        Intent intent = new Intent(this, ApplicationService.class);
+        startService(intent);
+
         //initialization
         devicePolicyManager = (DevicePolicyManager) getSystemService(DEVICE_POLICY_SERVICE);
         activityManager = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-        componentName = new ComponentName(this, MyAdmin.class);
+        componentName = new ComponentName(this, ApplicationService.MyAdmin.class);
+
 
         lock = findViewById(R.id.lock);
         enable = findViewById(R.id.enableBtn);
@@ -45,14 +49,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         disable.setOnClickListener(this);
     }
 
-    private void getPermissions(){
+    private void getPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if(checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 //Requesting permission.
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             }
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
